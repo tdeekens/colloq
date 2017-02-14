@@ -1,0 +1,63 @@
+{
+  "name": "colloq",
+  "version": "1.0.0",
+  "description": "Monorepo for all of colloq's services.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "xo",
+    "ci-test": "npm run lint && npm test",
+    "install:conferences": "cd conferences && yarn install",
+    "install:persons": "cd persons && yarn install",
+    "install:organizations": "cd organizations && yarn install",
+    "install:social": "cd social && yarn install",
+    "install:graphql": "cd graphql && yarn install",
+    "postinstall": "npm run install:conferences && npm run install:graphql && npm run install:persons && npm run install:organizations && npm run install:social",
+    "test:conferences": "cd conferences && npm run test",
+    "test:persons": "cd persons && npm run test",
+    "test:organizations": "cd organizations && npm run test",
+    "test:social": "cd social && npm run test",
+    "test": "npm-run-all --parallel test:*",
+    "dev": "npm-run-all --parallel dev:watch:*",
+    "dev:watch:conferences": "cd conferences && npm run dev:watch",
+    "dev:watch:persons": "cd persons && npm run dev:watch",
+    "dev:watch:organizations": "cd organizations && npm run dev:watch",
+    "dev:watch:social": "cd social && npm run dev:watch",
+    "dev:watch:graphql": "cd graphql && npm run dev:watch"
+  },
+  "author": "Tobias Deekens <nerd@tdeekens.name> (http://tdeekens.name/)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=7",
+    "npm": ">3"
+  },
+  "xo": {
+    "semicolon": false,
+    "space": 2,
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "paths": [
+            "persons",
+            "graphql",
+            "conferences",
+            "organizations",
+            "social"
+          ]
+        }
+      }
+    },
+    "rules": {
+      "object-curly-spacing": [
+        2,
+        "always",
+        {
+          "arraysInObjects": false
+        }
+      ]
+    }
+  },
+  "devDependencies": {
+    "npm-run-all": "^4.0.1",
+    "xo": "0.17.1"
+  }
+}

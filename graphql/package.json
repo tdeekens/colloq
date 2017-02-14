@@ -1,0 +1,35 @@
+{
+  "name": "colloq-graphql",
+  "version": "1.0.0",
+  "description": "An example GraphQL server with running Apollo on Hapi.",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start processes.json",
+    "stop": "pm2 stop processes.json",
+    "dev:watch": "NODE_ENV=dev NODE_PATH=. DEBUG=* nodemon server.js",
+    "dev:inspect": "NODE_ENV=dev NODE_PATH=. DEBUG=* node --inspect server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "docker:build": "docker build -t $(whoami)/conferences .",
+    "docker:start": "docker run -p 4000:4000 -d --name conferences $(whoami)/conferences",
+    "docker:stop": "docker stop conferences",
+    "docker:rm": "docker rm $(docker ps -a -q)"
+  },
+  "author": "Tobias Deekens <nerd@tdeekens.name> (http://tdeekens.name/)",
+  "license": "MIT",
+  "engines" : { "node" : ">=7", "npm" : ">3" },
+  "dependencies": {
+    "debug": "2.2.0",
+    "graphql": "0.7.2",
+    "graphql-server-hapi": "0.4.3",
+    "graphql-tools": "0.8.0",
+    "hapi": "15.2.0",
+    "metrics-os": "1.0.1",
+    "node-env-file": "0.1.8",
+    "node-fetch": "1.6.3",
+    "node-sha1": "1.0.1",
+    "pm2": "2.0.19"
+  },
+  "devDependencies": {
+    "nodemon": "1.11.0"
+  }
+}

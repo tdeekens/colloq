@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "persons",
+    "script": "node",
+    "args": "server.js",
+    "merge_logs": true,
+    "max_restarts": 20,
+    "instances": 4,
+    "max_memory_restart": "200M",
+    "env": {
+      "NODE_ENV": "prod",
+      "NODE_PATH": "."
+    }
+  }]
+}

@@ -1,0 +1,37 @@
+{
+  "name": "colloq-social",
+  "version": "1.0.0",
+  "description": "Social service",
+  "main": "index.js",
+  "scripts": {
+    "start": "pm2 start processes.json",
+    "stop": "pm2 stop processes.json",
+    "dev:inspect": "NODE_ENV=dev NODE_PATH=. DEBUG=* node --inspect server.js",
+    "dev:watch": "NODE_ENV=dev NODE_PATH=. DEBUG=* nodemon server.js",
+    "test": "NODE_ENV=test NODE_PATH=. ava",
+    "docker:build": "docker build -t $(whoami)/social .",
+    "docker:start": "docker run -p 4003:4003 -d --name social $(whoami)/social",
+    "docker:stop": "docker stop social",
+    "docker:rm": "docker rm $(docker ps -a -q)"
+  },
+  "author": "Tobias Deekens <nerd@tdeekens.name> (http://tdeekens.name/)",
+  "license": "MIT",
+  "engines": {
+    "node": ">=7",
+    "npm": ">3"
+  },
+  "dependencies": {
+    "debug": "2.2.0",
+    "hapi": "15.2.0",
+    "metrics-os": "1.0.1",
+    "node-env-file": "0.1.8",
+    "node-fetch": "1.6.3",
+    "node-uuid": "1.4.7",
+    "pm2": "2.0.19"
+  },
+  "devDependencies": {
+    "ava": "^0.18.1",
+    "faker": "3.1.0",
+    "nodemon": "1.11.0"
+  }
+}

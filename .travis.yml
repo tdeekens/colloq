@@ -1,0 +1,10 @@
+language: node_js
+cache: yarn
+node_js:
+  - '6'
+  - '7'
+before_install:
+notifications:
+  email: false
+  slack:
+    secure: Q2NlerQC8kgzjkD3gnMFs4VPJ35UMZ8tG6tj/PAHCK4U0iPBJ2Um6WxEa9JvvFe2eXiAIZhq2ZWhfU2cPh/fOYIQYNxGeXFJ8SfnXIJiCzEWCzFtNvRQt1scjukXNPxnvvvT/xP/hfmc9/7EnwlgAQoEQ+1SlMjKIc71g3qzvSw=
