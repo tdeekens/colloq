@@ -27,15 +27,15 @@ This obviously is a bit of a technology playground resulting in some adventurous
 
 ### Server
 
-All services are implemented with HapiJs and are kept simple as in that authentication should either be handled by JWTs or an service at some point.
+All services are implemented with HapiJs and are kept simple as in that authentication should either be handled by JWTs or a service at some point.
 The whole GraphQL functionality is implemented using the `graphql-server-hapi` from the lovely people at Apollo GraphQL.
 
 ### Testing
 
-The testing library used is `ava` as it encourages parallel test runs forcing a non existent dependencies between suites. Moreover, it can be used for server side units/API testing as much as it can be used for UI snapshot testing.
+The testing library used is `ava` as it encourages parallel test runs, enforcing no dependencies between suites. Moreover, it can be used for server side units/API testing as much as it can be used for UI snapshot testing.
 
 - Units with logic such as fixtures are tested as units
-- API and resource are testing as a component (route all down the stack until fixtures)
+- API and resource are tested as a component (route all down the stack until fixtures)
 
 The local `envs` module encapsulates the `process.env.NODE_ENV` set in the `package.json` to reduce string dependencies and allow for easy switching in e.g. the models.
 
@@ -49,11 +49,11 @@ The `debug`-package is used within services giving more insight whenever debug s
 
 ### Dependencies
 
-`yarn` is used by default when installing packages locally and on `TravisCI`. All just however work with `npm`.
+`yarn` is used by default when installing packages locally and on `TravisCI`. All however just works with `npm`.
 
 ## Services
 
-Services all follow the same patterns and are implemented with Hapi as a framework. Each `route` within `routes` contains a fixture a module for each HTTP method and an `index`-file which exports an `attachRoute`-fn which is invoked with the server by the overall routes `index`. The routes `index` itself exports an `attachRoutes` which is imported in `server.js`.
+All services follow the same patterns and are implemented with Hapi as a framework. Each `route` within `routes` contains a fixture, a module for each HTTP method and an `index`-file which exports an `attachRoute`-fn which is invoked with the server by the overall routes `index`. The routes `index` itself exports an `attachRoutes` which is imported in `server.js`.
 
 In general terms:
 
@@ -67,7 +67,7 @@ Each route then has a model for its resource which runs in "fixture-mode" or "da
 
 Outward facing GraphQL API aggregating data from all behind services.
 
-In development runs on [:3000](http://localhost:3000). The GrapiQL route is only available under development [:3000/graphiql](http://localhost:3000/graphiql)
+In development runs on [:3000](http://localhost:3000). The GraphiQL route is only available under development [:3000/graphiql](http://localhost:3000/graphiql)
 
 The GraphQL schema is modularised into [`/types`](graphql/types) and [`/resolvers`](graphql/resolvers) to keep it not too bloated.
 
@@ -116,6 +116,6 @@ All services expose a `GET /health` and a `GET /metrics` resource. The first can
 
 ## Todo
 
-- [ ] A frontend with Inferno or PReeact
+- [ ] A frontend with Inferno or PReact
 - [ ] Think about testing GraphQL API
 - [ ] Implement an authentification based on OAuth2 or JWT and integrate with GraphQl
